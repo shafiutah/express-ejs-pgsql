@@ -1,20 +1,24 @@
 import express from "express";
 import session from "express-session";
-import dotenv from "dotenv"; // Added dotenv for environment variable management
-import path from "path"; // Added path module for handling file paths
-import {fileURLToPath} from "url"; // Added to get __dirname in ES modules
+import dotenv from "dotenv";
+import path from "path";
+import {fileURLToPath} from "url";
+
 import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import {testConnection} from "./config/db.js";
 
-dotenv.config(); // Load environment variables from .env file
-
-const __filename = fileURLToPath(import.meta.url); // Get the current file path
-const __dirname = path.dirname(__filename); // Get the directory name
-
+dotenv.config();
 const app = express();
-app.set("view engine", "ejs"); // Set EJS as the templating engine
-app.set("views", path.join(__dirname, "views")); // Set the views directory
-app.use(express.urlencoded({extended: true})); // Middleware to parse URL-encoded bodies
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+app.use(express.urlencoded({extended: true}));
+app.use(express.static(path.join(__dirname, "../public")));
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+// Session
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -23,8 +27,29 @@ app.use(
   })
 );
 
-app.use(authRoutes); // Use authentication routes
-app.use((req, res) => res.redirect("/login")); // Redirect all unknown routes to login
+// Make user available in all views
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
 
+// Routes
+app.use("/", authRoutes);
+app.use("/users", userRoutes);
+
+app.get("/dashboard", (req, res) => {
+  if (!req.session.user) return res.redirect("/login");
+  res.render("dashboard", {user: req.session.user});
+});
+
+app.get("/", (req, res) => {
+  if (req.session.user) return res.redirect("/dashboard");
+  res.redirect("/login");
+});
+
+// Start server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+app.listen(PORT, async () => {
+  await testConnection();
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+});

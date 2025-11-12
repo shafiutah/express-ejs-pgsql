@@ -1,0 +1,44 @@
+<%- include('partials/header', { user: user }) %>
+
+<h1>Users Management</h1>
+
+<% if (user.role === 'admin') { %>
+<h3>Create New User</h3>
+<form action="/users/create" method="POST">
+  <input name="name" placeholder="Name" required />
+  <input name="email" placeholder="Email" required />
+  <input name="password" placeholder="Password" required />
+  <select name="role">
+    <option value="user">User</option>
+    <option value="admin">Admin</option>
+  </select>
+  <button type="submit">Create</button>
+</form>
+<% } %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Actions</th>
+  </tr>
+  <% users.forEach(u => { %>
+  <tr>
+    <td><%= u.id %></td>
+    <td><%= u.name %></td>
+    <td><%= u.email %></td>
+    <td><%= u.role %></td>
+    <td>
+      <% if (user.role === 'admin') { %>
+      <form action="/users/<%= u.id %>/delete" method="POST" onsubmit="return confirm('Delete user?');">
+        <button type="submit">Delete</button>
+      </form>
+      <% } %>
+    </td>
+  </tr>
+  <% }) %>
+</table>
+
+<%- include('partials/footer') %>

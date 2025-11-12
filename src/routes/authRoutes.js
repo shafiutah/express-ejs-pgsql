@@ -1,19 +1,14 @@
 import express from "express";
-import {showLogin, showRegister, register, login, logout} from "../controllers/authController.js";
-import {ensureAuth} from "../middlewares/authMiddleware.js";
+import {showLogin, loginUser, logoutUser, showRegister, registerUser} from "../controllers/authController.js";
 
 const router = express.Router();
 
 router.get("/login", showLogin);
-router.post("/login", login);
+router.post("/login", loginUser);
 
 router.get("/register", showRegister);
-router.post("/register", register);
+router.post("/register", registerUser);
 
-router.get("/logout", logout);
-
-router.get("/dashboard", ensureAuth, (req, res) => {
-  res.render("dashboard", {user: req.session.user});
-});
+router.get("/logout", logoutUser);
 
 export default router;

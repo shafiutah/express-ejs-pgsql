@@ -1,0 +1,20 @@
+<%- include('partials/header', { user: user }) %>
+
+<h1>My Profile</h1>
+<% if (typeof error !== 'undefined') { %>
+<p style="color: red"><%= error %></p>
+<% } %>
+<form action="/users/profile" method="POST">
+  <label>Name:</label><br />
+  <input type="text" name="name" value="<%= user.name %>" required /><br /><br />
+
+  <label>Email:</label><br />
+  <input type="email" name="email" value="<%= user.email %>" required /><br /><br />
+
+  <label>New Password:</label><br />
+  <input type="password" name="password" placeholder="Leave blank to keep current" /><br /><br />
+
+  <button type="submit">Update Profile</button>
+</form>
+
+<%- include('partials/footer') %>

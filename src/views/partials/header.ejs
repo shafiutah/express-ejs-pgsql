@@ -1,0 +1,13 @@
+<header style="background: #333; color: #fff; padding: 10px">
+  <% if (user) { %> Welcome, <%= user.name %> |
+  <a href="/dashboard" style="color: #fff; margin-right: 10px">Dashboard</a>
+  <% if (user.role === 'admin') { %>
+  <a href="/users" style="color: #fff; margin-right: 10px">Manage Users</a>
+  <% } %>
+  <a href="/users/profile" style="color: #fff; margin-right: 10px">Profile</a>
+  <a href="/logout" style="color: #fff">Logout</a>
+  <% } else { %>
+  <a href="/login" style="color: #fff; margin-right: 10px">Login</a>
+  <a href="/register" style="color: #fff">Register</a>
+  <% } %>
+</header>

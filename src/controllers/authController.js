@@ -1,46 +1,51 @@
-import {createUser, findUserByEmail} from "../models/userModel.js";
-import {hashPassword, verifyPassword} from "../utils/password.js";
+import bcrypt from "bcryptjs";
+import {pool} from "../config/db.js";
 
-export const showLogin = (req, res) => {
-  res.render("login", {error: null});
-};
+export async function showRegister(req, res) {
+  res.render("register", {user: req.session.user});
+}
 
-export const showRegister = (req, res) => {
-  res.render("register", {error: null});
-};
-
-export const register = async (req, res) => {
-  const {name, email, password} = req.body;
+export async function registerUser(req, res) {
+  const {name, email, password, role} = req.body;
   try {
-    const existing = await findUserByEmail(email);
-    if (existing) return res.render("register", {error: "Email already registered"});
-
-    const passwordHash = await hashPassword(password);
-    await createUser(name, email, passwordHash);
+    const existing = await pool.query("SELECT * FROM users WHERE email=$1", [email]);
+    if (existing.rows.length) {
+      return res.render("register", {user: req.session.user, error: "Email already exists"});
+    }
+    const hashed = await bcrypt.hash(password, 10);
+    await pool.query("INSERT INTO users (name,email,password,role) VALUES ($1,$2,$3,$4)", [name, email, hashed, role || "user"]);
     res.redirect("/login");
   } catch (err) {
     console.error(err);
-    res.render("register", {error: "Registration failed"});
+    res.render("register", {user: req.session.user, error: "Registration failed"});
   }
-};
+}
 
-export const login = async (req, res) => {
+export async function showLogin(req, res) {
+  res.render("login", {user: req.session.user});
+}
+
+export async function loginUser(req, res) {
   const {email, password} = req.body;
   try {
-    const user = await findUserByEmail(email);
-    if (!user) return res.render("login", {error: "Invalid credentials"});
+    const result = await pool.query("SELECT * FROM users WHERE email=$1", [email]);
+    if (!result.rows.length) return res.render("login", {user: req.session.user, error: "Invalid email or password"});
 
-    const valid = await verifyPassword(password, user.password);
-    if (!valid) return res.render("login", {error: "Invalid credentials"});
+    const user = result.rows[0];
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) return res.render("login", {user: req.session.user, error: "Invalid email or password"});
 
-    req.session.user = {id: user.id, name: user.name, email: user.email};
+    req.session.user = {id: user.id, name: user.name, email: user.email, role: user.role};
     res.redirect("/dashboard");
   } catch (err) {
     console.error(err);
-    res.render("login", {error: "Login failed"});
+    res.render("login", {user: req.session.user, error: "Login failed"});
   }
-};
+}
 
-export const logout = (req, res) => {
-  req.session.destroy(() => res.redirect("/login"));
-};
+export function logoutUser(req, res) {
+  req.session.destroy((err) => {
+    if (err) console.error(err);
+    res.redirect("/login");
+  });
+}
