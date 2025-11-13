@@ -141,7 +141,7 @@ CREATE TABLE users (
 
 ---
  
-## 🚀Running the Application
+## 🚀 Running the Application
 
 ### Development Mode (with auto-reload)
 
