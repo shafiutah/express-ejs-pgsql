@@ -202,6 +202,7 @@ express-ejs-pgsql/
 └── README.md                     # This file
 ```
 
+[Go to Index](#-table-of-contents)
 ---
 
 ## 🔗 API Routes
@@ -312,7 +313,8 @@ express-ejs-pgsql/
 - Session secret stored in environment variables
 - Automatic session persistence
 - User data available in all views via `res.locals.user`
-
+  
+[Go to Index](#-table-of-contents)
 ---
 
 ## 🔒 Security Features
@@ -407,6 +409,7 @@ Error: Failed to lookup view "login"
 - Ensure views are in `src/views/` directory
 - Check that `app.set("views", path.join(__dirname, "views"));` is correct
 
+[Go to Index](#-table-of-contents)
 ---
 
 ## 📝 Environment Variables
