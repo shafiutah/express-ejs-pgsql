@@ -339,7 +339,7 @@ express-ejs-pgsql/
 - Authentication middleware on protected routes
 - Role-based authorization (admin vs user)
 - Session validation checks
-
+- [Prerequisites](#-table-of-contents)
 [Go to Index](#-table-of-contents)
 ---
 
