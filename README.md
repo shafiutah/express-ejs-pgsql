@@ -481,7 +481,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 **Shafi Utah**
 
 - GitHub: [@shafiutah](https://github.com/shafiutah)
-- Email: your.email@example.com
+- Email: shafiutah@gmail.com
 
 ---
 
@@ -490,7 +490,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 For issues, questions, or suggestions:
 
 1. **GitHub Issues:** [Create an issue](https://github.com/shafiutah/express-ejs-pgsql/issues)
-2. **Email:** your.email@example.com
+2. **Email:** shafiutah@gmail.com
 3. **Discussion:** Check existing issues for solutions
 
 ---
