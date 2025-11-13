@@ -30,7 +30,7 @@ A minimal, production-ready authentication application built with **Express.js**
 - [Installation](#-installation)
 - [Configuration](#configuration)
 - [Database Setup](#database-setup)
-- [Running the Application](#running-the-application)
+- [Running the Application](#-running-the-application)
 - [Project Structure](#-project-structure)
 - [API Routes](#-api-routes)
 - [Features Details](#-features-details)
@@ -140,8 +140,8 @@ CREATE TABLE users (
 ```
 
 ---
-🚀 
-## Running the Application
+ 
+## 🚀Running the Application
 
 ### Development Mode (with auto-reload)
 
