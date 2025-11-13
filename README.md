@@ -28,7 +28,7 @@ A minimal, production-ready authentication application built with **Express.js**
 
 - [Prerequisites](#-prerequisites)
 - [Installation](#-installation)
-- [Configuration](#-configuration)
+- [Configuration](#configuration)
 - [Database Setup](#-database-setup)
 - [Running the Application](#-running-the-application)
 - [Project Structure](#-project-structure)
@@ -77,9 +77,10 @@ This will install all required packages:
 - `nodemon` - Development server (dev dependency)
 
 ---
+⚙️ ## Configuration
 
-## ⚙️ Configuration
-
+## Configuration
+⚙️ 
 ### Create Environment File
 
 Create a `.env` file in the root directory with the following variables:
