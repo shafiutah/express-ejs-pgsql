@@ -106,8 +106,8 @@ DB_PASSWORD=your_password_here
 - In production, use environment variables from your hosting platform
 
 ---
-🗄️
-## Database Setup
+
+## 🗄️ Database Setup
 
 ### Create PostgreSQL Database
 
