@@ -26,17 +26,17 @@ A minimal, production-ready authentication application built with **Express.js**
 
 ## 📋 Table of Contents
 
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Database Setup](#database-setup)
-- [Running the Application](#running-the-application)
-- [Project Structure](#project-structure)
-- [API Routes](#api-routes)
-- [Features Details](#features-details)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
+- [Prerequisites](-#prerequisites)
+- [Installation](-#installation)
+- [Configuration](-#configuration)
+- [Database Setup](-#database-setup)
+- [Running the Application](-#running-the-application)
+- [Project Structure](-#project-structure)
+- [API Routes](-#api-routes)
+- [Features Details](-#features-details)
+- [Troubleshooting](-#troubleshooting)
+- [Contributing](-#contributing)
+- [License](-#license)
 
 ---
 
