@@ -159,6 +159,7 @@ npm start
 
 The application will start on `http://localhost:3000` (or your specified PORT).
 
+[Go to Index](#-table-of-contents)
 ---
 
 ## 📁 Project Structure
@@ -232,6 +233,7 @@ express-ejs-pgsql/
 | GET    | `/`          | Home (redirects to login/dashboard) |
 | GET    | `/dashboard` | User dashboard                      |
 
+[Go to Index](#-table-of-contents)
 ---
 
 ## ✨ Features Details
@@ -338,6 +340,7 @@ express-ejs-pgsql/
 - Role-based authorization (admin vs user)
 - Session validation checks
 
+[Go to Index](#-table-of-contents)
 ---
 
 ## 🐛 Troubleshooting
@@ -418,6 +421,7 @@ Error: Failed to lookup view "login"
 | `DB_USER`        | Database user             | `postgres`             |
 | `DB_PASSWORD`    | Database password         | `your_password`        |
 
+[Go to Index](#-table-of-contents)
 ---
 
 ## 🧪 Testing Workflow
@@ -448,6 +452,7 @@ Error: Failed to lookup view "login"
 - Create new user or delete existing user
 - Actions should complete successfully
 
+[Go to Index](#-table-of-contents)
 ---
 
 ## 🤝 Contributing
@@ -500,6 +505,7 @@ For issues, questions, or suggestions:
 - [ ] Implement rate limiting for login attempts
 - [ ] Add CSRF protection
 
+[Go to Index](#-table-of-contents)
 ---
 
 ## 📚 Resources
