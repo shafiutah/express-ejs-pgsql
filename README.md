@@ -29,8 +29,8 @@ A minimal, production-ready authentication application built with **Express.js**
 - [Prerequisites](#-prerequisites)
 - [Installation](#-installation)
 - [Configuration](#configuration)
-- [Database Setup](#-database-setup)
-- [Running the Application](#-running-the-application)
+- [Database Setup](#database-setup)
+- [Running the Application](#running-the-application)
 - [Project Structure](#-project-structure)
 - [API Routes](#-api-routes)
 - [Features Details](#-features-details)
@@ -77,10 +77,8 @@ This will install all required packages:
 - `nodemon` - Development server (dev dependency)
 
 ---
-⚙️ ## Configuration
-
+⚙️
 ## Configuration
-⚙️ 
 ### Create Environment File
 
 Create a `.env` file in the root directory with the following variables:
@@ -108,8 +106,8 @@ DB_PASSWORD=your_password_here
 - In production, use environment variables from your hosting platform
 
 ---
-
-## 🗄️ Database Setup
+🗄️
+## Database Setup
 
 ### Create PostgreSQL Database
 
@@ -142,8 +140,8 @@ CREATE TABLE users (
 ```
 
 ---
-
-## 🚀 Running the Application
+🚀 
+## Running the Application
 
 ### Development Mode (with auto-reload)
 
